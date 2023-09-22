@@ -16,7 +16,7 @@
         <input type="text" v-model="newTodo" />
         <button type="button" @click="addTodo">Tambahkan</button>
       </div>
-      <div v-if="listTodo.length >= 4">Hebat!</div>
+      <div v-if="checkLen">Hebat!</div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -29,8 +29,15 @@
         },
         methods: {
           addTodo() {
-            this.listTodo.push(this.newTodo);
-            this.newTodo = "";
+            if (this.newTodo.length > 0) {
+              this.listTodo.push(this.newTodo);
+              this.newTodo = "";
+            }
+          },
+        },
+        computed: {
+          checkLen() {
+            return this.listTodo.length >= 4;
           },
         },
       });
