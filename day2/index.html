@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 2</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <ol v-if="listTodo.length > 0">
+          <li v-for="todo in listTodo">{{ todo }}</li>
+        </ol>
+      </div>
+      <div>
+        <input type="text" v-model="newTodo" />
+        <button type="button" @click="addTodo">Tambahkan</button>
+      </div>
+      <div v-if="listTodo.length >= 4">Hebat!</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          newTodo: "",
+          listTodo: [],
+        },
+        methods: {
+          addTodo() {
+            this.listTodo.push(this.newTodo);
+            this.newTodo = "";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
