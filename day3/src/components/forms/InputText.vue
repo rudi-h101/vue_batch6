@@ -16,6 +16,9 @@ export default {
     internalValue(newVal) {
       this.$emit("input", newVal);
     },
+    value(newVal) {
+      this.internalValue = newVal;
+    },
   },
 };
 </script>
